@@ -42,5 +42,8 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# MacOs is only for testing
+# These are only for testing
 /macos/
+/web/
+/linux/
+/windows/
