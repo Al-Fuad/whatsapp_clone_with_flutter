@@ -5,7 +5,6 @@ import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dar
 
 import '../../../utils/constants/app_color.dart';
 import '../../../utils/helpers/helper_function.dart';
-import '../button/circular_image.dart';
 import '../image/circular_image.dart';
 
 class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
