@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:whatsapp_clone_with_flutter/features/chats/screens/call_log/widget/call.dart';
+import 'package:whatsapp_clone_with_flutter/features/chats/screens/call_log/widget/video_call.dart';
 
 import '../../../../../utils/constants/app_color.dart';
 
@@ -49,7 +52,7 @@ class SingleCallLogTab extends StatelessWidget {
         ],
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: isVideoCall ? () => Get.to(() => VideoCall()) : () => Get.to(() => Call()),
         icon: isVideoCall ? Icon(Icons.videocam_outlined) : Icon(Icons.call_outlined),
       ),
     );
