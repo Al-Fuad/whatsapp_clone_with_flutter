@@ -42,8 +42,8 @@ class HelperFunctions{
     }
   }
 
-  static bool isDarkMode(BuildContext context){
-    return Theme.of(context).brightness == Brightness.dark;
+  static bool isDarkMode(){
+    return Theme.of(Get.context!).brightness == Brightness.dark;
   }
 
   static Size screenSize(){
