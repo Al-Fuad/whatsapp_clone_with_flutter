@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone_with_flutter/common/style/border_style.dart';
+import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
 import 'package:whatsapp_clone_with_flutter/common/widget/button/circular_image_button.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 

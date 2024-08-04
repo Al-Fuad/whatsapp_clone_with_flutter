@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:whatsapp_clone_with_flutter/common/style/border_style.dart';
+import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/home/widget/archived.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/home/widget/single_chat_tab.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
