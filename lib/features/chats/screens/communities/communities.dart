@@ -13,7 +13,7 @@ class Communities extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Scaffold(
-      backgroundColor: AppColor.black,
+      backgroundColor: dark ? AppColor.black : Color(0xFFF3F3F3),
       appBar: WAAppBar(
         title: "Communities",
         cameraButtonPressed: (){},
@@ -25,7 +25,7 @@ class Communities extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                  color: AppColor.backgroudDark,
+                  color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                 child: ListTile(
                   onTap: (){},
                   leading: Stack(
@@ -58,7 +58,7 @@ class Communities extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border(bottom: CustomBorderStyle.defaultBorderSideStyle),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     ),
                     child: ListTile(
                       onTap: (){},
@@ -68,7 +68,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -77,7 +77,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -86,7 +86,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -94,8 +94,9 @@ class Communities extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    height: 70,
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: Icon(Icons.keyboard_arrow_right),
@@ -111,7 +112,7 @@ class Communities extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border(bottom: CustomBorderStyle.defaultBorderSideStyle),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     ),
                     child: ListTile(
                       onTap: (){},
@@ -121,7 +122,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -130,7 +131,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -139,7 +140,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -147,8 +148,9 @@ class Communities extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    height: 70,
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: Icon(Icons.keyboard_arrow_right),
@@ -164,7 +166,7 @@ class Communities extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border(bottom: CustomBorderStyle.defaultBorderSideStyle),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     ),
                     child: ListTile(
                       onTap: (){},
@@ -174,7 +176,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -183,7 +185,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -192,7 +194,7 @@ class Communities extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: CircularImageButton(),
@@ -200,61 +202,9 @@ class Communities extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    height: 70,
                     padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
-                    child: ListTile(
-                      onTap: (){},
-                      leading: Icon(Icons.keyboard_arrow_right),
-                      title: Text("View All"),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 8,),
-              Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border(bottom: CustomBorderStyle.defaultBorderSideStyle),
-                    color: AppColor.backgroudDark,
-                    ),
-                    child: ListTile(
-                      onTap: (){},
-                      leading: CircularImageButton(),
-                      title: Text("New Community"),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
-                    child: ListTile(
-                      onTap: (){},
-                      leading: CircularImageButton(),
-                      title: Text("New Community"),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
-                    child: ListTile(
-                      onTap: (){},
-                      leading: CircularImageButton(),
-                      title: Text("New Community"),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
-                    child: ListTile(
-                      onTap: (){},
-                      leading: CircularImageButton(),
-                      title: Text("New Community"),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    color: AppColor.backgroudDark,
+                    color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
                     child: ListTile(
                       onTap: (){},
                       leading: Icon(Icons.keyboard_arrow_right),

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
+import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 
 class MessageBar extends StatelessWidget {
   const MessageBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode();
     return Container(
       padding: EdgeInsets.all(5),
       child: Row(
@@ -16,7 +18,7 @@ class MessageBar extends StatelessWidget {
           Expanded(
               child: Container(
             decoration: BoxDecoration(
-                color: AppColor.messageBar,
+                color: dark ? AppColor.messageBar : AppColor.white,
                 borderRadius: BorderRadius.circular(30)),
             child: Row(
               children: [
@@ -57,7 +59,7 @@ class MessageBar extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.mic,
-                color: AppColor.black,
+                color: dark ? AppColor.black : AppColor.white,
               ))
         ],
       ),

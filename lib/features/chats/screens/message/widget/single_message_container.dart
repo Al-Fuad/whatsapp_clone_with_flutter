@@ -12,6 +12,7 @@ class SingleMessageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode();
     return Align(
       alignment: user ? Alignment.centerRight : Alignment.centerLeft,
       child: ConstrainedBox(
@@ -21,8 +22,8 @@ class SingleMessageContainer extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: user
-                ? AppColor.messageBackgroundUser
-                : AppColor.messageBackgroundFriend,
+                ? dark ? AppColor.messageBackgroundUser : AppColor.secondaryLight
+                : dark ? AppColor.messageBackgroundFriend : AppColor.white,
           ),
           child: Stack(
             children: [

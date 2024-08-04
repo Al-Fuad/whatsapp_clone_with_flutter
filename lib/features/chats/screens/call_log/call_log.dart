@@ -43,7 +43,7 @@ class CallLog extends StatelessWidget {
                       IconButton.styleFrom(backgroundColor: AppColor.primary),
                   icon: Icon(
                     CupertinoIcons.heart_fill,
-                    color: AppColor.black,
+                    color: dark ? AppColor.black : AppColor.white,
                   ),
                 ),
               ),
@@ -84,7 +84,7 @@ class CallLog extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {  },
         backgroundColor: AppColor.primary,
-        child: Icon(Icons.add_ic_call, color: AppColor.black,),
+        child: Icon(Icons.add_ic_call, color: dark ? AppColor.black : AppColor.white,),
       ),
 
     );

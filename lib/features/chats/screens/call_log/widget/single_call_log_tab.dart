@@ -30,7 +30,7 @@ class SingleCallLogTab extends StatelessWidget {
         children: [
           Text(
             "Person1",
-            style: TextStyle(fontSize: 16, color: isMissed ? Colors.red : AppColor.white),
+            style: TextStyle(fontSize: 16, color: isMissed ? Colors.red : null),
           ),
           Row(
             children: [

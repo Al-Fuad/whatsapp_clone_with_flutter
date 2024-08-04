@@ -101,7 +101,7 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {  },
         backgroundColor: AppColor.primary,
-        child: Icon(Icons.add_comment, color: AppColor.black,),
+        child: Icon(Icons.add_comment, color: dark ? AppColor.black : AppColor.white,),
       ),
 
       // bottomNavigationBar: const BottomNav(),

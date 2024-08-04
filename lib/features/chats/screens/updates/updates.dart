@@ -173,7 +173,7 @@ class Updates extends StatelessWidget {
           FloatingActionButton(
             onPressed: () {  },
             backgroundColor: AppColor.primary,
-            child: Icon(Icons.camera_alt, color: AppColor.black,),
+            child: Icon(Icons.camera_alt, color: dark ? AppColor.black : AppColor.white,),
           ),
           SizedBox(height: 10,),
           SizedBox(
@@ -181,8 +181,8 @@ class Updates extends StatelessWidget {
             width: 40,
             child: FloatingActionButton(
               onPressed: () {  },
-                backgroundColor: AppColor.writeStatus,
-                child: Icon(Icons.edit, color: AppColor.grey,),
+                backgroundColor: dark ? AppColor.writeStatus : AppColor.grey,
+                child: Icon(Icons.edit, color: dark ? AppColor.grey : AppColor.writeStatus,),
                 ),
           ),
         ],
