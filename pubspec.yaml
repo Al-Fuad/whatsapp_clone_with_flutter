@@ -15,6 +15,7 @@ dependencies:
 
   get: ^4.6.6
   cupertino_icons: ^1.0.6
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,5 @@ flutter:
 
   assets:
     - assets/logos/
+    - assets/demo_friends_avatars/
+    - assets/backgrounds/
