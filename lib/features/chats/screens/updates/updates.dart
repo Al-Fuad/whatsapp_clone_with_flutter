@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
 import 'package:whatsapp_clone_with_flutter/common/widget/appbar/wa_app_bar.dart';
-import 'package:whatsapp_clone_with_flutter/common/widget/button/circular_image_button.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/updates/widget/channel.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
+
+import '../../../../common/widget/image/circular_image.dart';
 
 class Updates extends StatelessWidget {
   const Updates({super.key});
@@ -46,7 +47,7 @@ class Updates extends StatelessWidget {
                     children: [
                       Stack(
                         children: [
-                          const CircularImageButton(),
+                          const CircularImage(),
                           Positioned(
                             right: 0,
                             bottom: 0,

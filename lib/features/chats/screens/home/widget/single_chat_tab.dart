@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:whatsapp_clone_with_flutter/common/widget/button/circular_image_button.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/message/message.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
+
+import '../../../../../common/widget/image/circular_image.dart';
 
 class SingleChatTab extends StatelessWidget {
   const SingleChatTab({super.key});
@@ -19,7 +20,7 @@ class SingleChatTab extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
         child: Row(
           children: [
-            CircularImageButton(),
+            CircularImage(),
             const SizedBox(
               width: 12,
             ),

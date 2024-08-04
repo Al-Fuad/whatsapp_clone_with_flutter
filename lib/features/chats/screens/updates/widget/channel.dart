@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widget/button/circular_image_button.dart';
+import '../../../../../common/widget/image/circular_image.dart';
 import '../../../../../utils/constants/app_color.dart';
 import '../../../../../utils/helpers/helper_function.dart';
 
@@ -28,7 +28,7 @@ class Channel extends StatelessWidget {
         children: [
           Stack(
             children: [
-              const CircularImageButton(),
+              const CircularImage(),
               Positioned(
                 right: 0,
                 bottom: 0,

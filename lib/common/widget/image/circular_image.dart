@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CircularImageButton extends StatelessWidget {
-  const CircularImageButton({
+class CircularImage extends StatelessWidget {
+  const CircularImage({
     super.key,
     this.height = 48
   });

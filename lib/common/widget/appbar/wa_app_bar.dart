@@ -5,7 +5,8 @@ import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dar
 
 import '../../../utils/constants/app_color.dart';
 import '../../../utils/helpers/helper_function.dart';
-import '../button/circular_image_button.dart';
+import '../button/circular_image.dart';
+import '../image/circular_image.dart';
 
 class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
   const WAAppBar(
@@ -13,7 +14,6 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.showBackButton = false,
       this.isBold = false,
-      this.addToCallButtonPressed,
       this.videoCallButtonPressed,
       this.audioCallButtonPressed,
       this.messageButtonPressed,
@@ -30,7 +30,6 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButtonWithImage;
   final Widget? titleWidget;
   final double leadingWidth, titleSpacing;
-  final VoidCallback? addToCallButtonPressed;
   final VoidCallback? videoCallButtonPressed;
   final VoidCallback? audioCallButtonPressed;
   final VoidCallback? messageButtonPressed;
@@ -70,21 +69,13 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
         Iconsax.arrow_left,
         size: 25,
         ),
-        CircularImageButton(),
+        CircularImage(),
       ],
     )) : null,
       shape: Border(
         bottom: CustomBorderStyle.defaultBorderSideStyle,
       ),
       actions: [
-        if (addToCallButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(
-              Iconsax.user,
-            ),
-            onPressed: addToCallButtonPressed,
-          ),
         if (videoCallButtonPressed != null)
           IconButton(
             iconSize: 22,

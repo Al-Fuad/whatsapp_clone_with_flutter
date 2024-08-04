@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:whatsapp_clone_with_flutter/common/widget/appbar/wa_app_bar.dart';
+import 'package:whatsapp_clone_with_flutter/features/chats/screens/call_log/widget/audio_call.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/message/widget/message_bar.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/message/widget/single_message_container.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
-
-import '../../../../common/widget/button/circular_image_button.dart';
 
 class Message extends StatelessWidget {
   const Message({super.key});
@@ -38,7 +38,7 @@ class Message extends StatelessWidget {
         showBackButtonWithImage: true,
         leadingWidth: 81,
         videoCallButtonPressed: () {},
-        audioCallButtonPressed: () {},
+        audioCallButtonPressed: () => Get.to(() => AudioCall()),
         moreButtonPressed: () {},
       ),
       body: Container(
