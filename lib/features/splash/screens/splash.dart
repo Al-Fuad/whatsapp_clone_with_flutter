@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:whatsapp_clone_with_flutter/features/Chat/screens/home/home.dart';
+import 'package:whatsapp_clone_with_flutter/bottom_nav.dart';
+import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 
 class Splash extends StatefulWidget {
@@ -17,15 +18,15 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(const Duration(milliseconds: 2000),(){
-      Get.off(() => const Home(), transition: Transition.fade);
+      Get.off(() => const BottomNav(), transition: Transition.fade);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunctions.isDarkMode(context);
+    final dark = HelperFunctions.isDarkMode();
     return Scaffold(
-      backgroundColor: dark ? Color(0xFF121B22) : Colors.white,
+      backgroundColor: dark ? AppColor.splashBackgroudDark : AppColor.splashBackgroudLight,
       body: Column(
         children: [
           Expanded(
@@ -57,8 +58,8 @@ class _SplashState extends State<Splash> {
                   children: [
                     Image(
                       image: dark
-                          ? const AssetImage("assets/logos/meta_dark.png")
-                          : const AssetImage("assets/logos/meta.png"),
+                          ?  const AssetImage("assets/logos/meta_dark.png")
+                          :  const AssetImage("assets/logos/meta.png"),
                       height: 18,
                     ),
                     const SizedBox(
@@ -67,7 +68,7 @@ class _SplashState extends State<Splash> {
                     Text(
                       "Meta",
                       style: TextStyle(
-                          color: dark ? Colors.white : const Color(0xff25D366),
+                          color: dark ? Colors.white : AppColor.primary,
                           fontSize: 15),
                     ),
                   ],
