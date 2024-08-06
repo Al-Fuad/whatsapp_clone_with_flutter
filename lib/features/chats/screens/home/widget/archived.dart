@@ -14,7 +14,7 @@ class Archived extends StatelessWidget {
       backgroundColor: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
       appBar: WAAppBar(
         title: "Archived",
-        moreButtonPressed: (){},
+        moreButtonText: ["Archive settings"],
         showBackButton: true,
       ),
       body: SingleChildScrollView(

@@ -41,7 +41,7 @@ class Message extends StatelessWidget {
         leadingWidth: 81,
         videoCallButtonPressed: () => Get.to(() => VideoCall()),
         audioCallButtonPressed: () => Get.to(() => Call()),
-        moreButtonPressed: () {},
+        moreButtonText: [],
       ),
       body: Container(
         decoration: BoxDecoration(

@@ -17,7 +17,7 @@ class Communities extends StatelessWidget {
       appBar: WAAppBar(
         title: "Communities",
         cameraButtonPressed: (){},
-        moreButtonPressed: (){},
+        moreButtonText: [],
       ),
       body: Container(
         child: SingleChildScrollView(

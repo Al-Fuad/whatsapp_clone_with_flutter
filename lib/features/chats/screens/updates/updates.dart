@@ -20,7 +20,7 @@ class Updates extends StatelessWidget {
         title: "Updates",
         cameraButtonPressed: (){},
         searchButtonPressed: (){},
-        moreButtonPressed: (){},
+        moreButtonText: [],
       ),
       body: SingleChildScrollView(
         child: Column(

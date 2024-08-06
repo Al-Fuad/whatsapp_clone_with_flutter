@@ -17,7 +17,7 @@ class CallLog extends StatelessWidget {
         title: "Calls",
         cameraButtonPressed: () {},
         searchButtonPressed: () {},
-        moreButtonPressed: () {},
+        moreButtonText: [],
       ),
       body: SingleChildScrollView(
         child: Padding(
