@@ -2,26 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
+import 'package:whatsapp_clone_with_flutter/common/widget/appbar/action_list.dart';
 
 import '../../../utils/constants/app_color.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../image/circular_image.dart';
 
 class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const WAAppBar(
-      {super.key,
-      this.title,
-      this.showBackButton = false,
-      this.isBold = false,
-      this.videoCallButtonPressed,
-      this.audioCallButtonPressed,
-      this.messageButtonPressed,
-      this.cameraButtonPressed,
-      this.searchButtonPressed,
-      this.moreButtonPressed,
-      this.titleWidget,
-      this.leadingWidth = 40,
-      this.showBackButtonWithImage = false, this.titleSpacing = 0});
+  const WAAppBar({
+    super.key,
+    this.title,
+    this.showBackButton = false,
+    this.isBold = false,
+    this.videoCallButtonPressed,
+    this.audioCallButtonPressed,
+    this.messageButtonPressed,
+    this.cameraButtonPressed,
+    this.searchButtonPressed,
+    this.moreButtonPressed = const [],
+    this.titleWidget,
+    this.leadingWidth = 40,
+    this.showBackButtonWithImage = false,
+    this.titleSpacing = 0,
+    this.moreButtonText = const [],
+  });
 
   final String? title;
   final bool isBold;
@@ -34,11 +38,19 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? messageButtonPressed;
   final VoidCallback? cameraButtonPressed;
   final VoidCallback? searchButtonPressed;
-  final VoidCallback? moreButtonPressed;
+  final List<Widget> moreButtonPressed;
+  final List<String> moreButtonText;
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
+    ActionList.moreButtonText = moreButtonText;
+    ActionList.moreButtonPressed = moreButtonPressed;
+    ActionList.searchButtonPressed = searchButtonPressed;
+    ActionList.cameraButtonPressed = cameraButtonPressed;
+    ActionList.messageButtonPressed = messageButtonPressed;
+    ActionList.audioCallButtonPressed = audioCallButtonPressed;
+    ActionList.videoCallButtonPressed = videoCallButtonPressed;
     return AppBar(
       titleSpacing: showBackButtonWithImage ? titleSpacing : null,
       title: (title != null)
@@ -52,7 +64,8 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
               : null,
       centerTitle: false,
       backgroundColor: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
-      leadingWidth: (showBackButton || showBackButtonWithImage) ? leadingWidth : null,
+      leadingWidth:
+          (showBackButton || showBackButtonWithImage) ? leadingWidth : null,
       leading: showBackButton
           ? IconButton(
               onPressed: () => Get.back(),
@@ -60,66 +73,23 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Iconsax.arrow_left,
                 size: 25,
               ))
-          : showBackButtonWithImage ? IconButton(
-        onPressed: () => Get.back(),
-    icon: Row(
-      children: [
-        const Icon(
-        Iconsax.arrow_left,
-        size: 25,
-        ),
-        CircularImage(),
-      ],
-    )) : null,
+          : showBackButtonWithImage
+              ? IconButton(
+                  onPressed: () => Get.back(),
+                  icon: const Row(
+                    children: [
+                      Icon(
+                        Iconsax.arrow_left,
+                        size: 25,
+                      ),
+                      CircularImage(),
+                    ],
+                  ))
+              : null,
       shape: Border(
         bottom: CustomBorderStyle.defaultBorderSideStyle,
       ),
-      actions: [
-        if (videoCallButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(
-              Icons.videocam_outlined,
-            ),
-            onPressed: videoCallButtonPressed,
-          ),
-        if (audioCallButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(
-              Icons.call_outlined,
-            ),
-            onPressed: audioCallButtonPressed,
-          ),
-        if (messageButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(
-              Icons.message_rounded,
-            ),
-            onPressed: messageButtonPressed,
-          ),
-        if (cameraButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(
-              Icons.camera_alt_outlined,
-            ),
-            onPressed: cameraButtonPressed,
-          ),
-        if (searchButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(Icons.search),
-            onPressed: searchButtonPressed,
-          ),
-        if (moreButtonPressed != null)
-          IconButton(
-            iconSize: 22,
-            icon: const Icon(Icons.more_vert),
-            onPressed: moreButtonPressed,
-          ),
-      ],
+      actions: ActionList.actions(),
     );
   }
 
