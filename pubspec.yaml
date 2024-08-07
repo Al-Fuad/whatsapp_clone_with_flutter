@@ -31,7 +31,6 @@ flutter:
 
   assets:
     - assets/logos/
-    - assets/demo_friends_avatars/
     - assets/backgrounds/
     - assets/users/
     - assets/groups/
