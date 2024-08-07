@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
+import 'package:whatsapp_clone_with_flutter/utils/constants/image_string.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 
 import '../../../../../common/style/custom_border_style.dart';
+import '../../../../../common/widget/image/circular_image.dart';
 
 class Call extends StatelessWidget {
-  const Call({super.key, this.isAudioCall = true});
+  const Call(
+      {super.key, this.isAudioCall = true, this.image, this.name = "Unknown"});
 
   final bool isAudioCall;
+  final String? name;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +23,14 @@ class Call extends StatelessWidget {
     return Scaffold(
         body: Container(
           padding: const EdgeInsets.all(10),
-          decoration: isAudioCall ? BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(dark
-                      ? "assets/backgrounds/backgroundImageDark.png"
-                      : "assets/backgrounds/backgroundImageLight.jpg"),
-                  fit: BoxFit.cover)
-          ) : null,
+          decoration: isAudioCall
+              ? BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(dark
+                          ? ImageString.backgroundImageDark
+                          : ImageString.backgroundImageLight),
+                      fit: BoxFit.cover))
+              : null,
           child: Column(
             children: [
               Row(
@@ -32,17 +38,17 @@ class Call extends StatelessWidget {
                   const SizedBox(
                     width: 50,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           CupertinoIcons.lock,
                           size: 12,
                         ),
                         Text(
                           "End-to-end encrypted",
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                          style: TextStyle(fontSize: 12, color: AppColor.grey),
                         ),
                       ],
                     ),
@@ -57,59 +63,96 @@ class Call extends StatelessWidget {
                           )))
                 ],
               ),
-              const SizedBox(height: 15,),
-              if(isAudioCall)
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: const Color(0xFF627885),
-                    borderRadius: BorderRadius.circular(100)
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 10,
-                        left: -2,
-                        child: Icon(
-                          Icons.person,
-                          color: AppColor.white,
-                          size: 107,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              const SizedBox(
+                height: 15,
               ),
-              const SizedBox(height: 15,),
-              Text("Person 1", style: TextStyle(color: AppColor.white, fontSize: 18),),
-              const SizedBox(height: 5,),
-              Text("Calling", style: TextStyle(color: AppColor.grey, fontSize: 12),)
+              if (isAudioCall)
+                (image == null)
+                    ? Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: AppColor.unknownUserBackground,
+                            borderRadius: BorderRadius.circular(100)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                top: 10,
+                                left: -2,
+                                child: Icon(
+                                  Icons.person,
+                                  color: AppColor.white,
+                                  size: 107,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : CircularImage(
+                        length: 100,
+                        image: image!,
+                      ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                name!,
+                style: TextStyle(
+                    color: dark ? AppColor.white : AppColor.black,
+                    fontSize: 18),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Calling",
+                style: TextStyle(color: AppColor.grey, fontSize: 12),
+              )
             ],
           ),
         ),
         bottomNavigationBar: Container(
           height: 80,
           decoration: BoxDecoration(
-              color: dark ? Color(0xFF1F2C34) : AppColor.backgroudLight,
+              color: dark ? AppColor.callNavDark : AppColor.callNavLight,
               border: Border(
                 bottom: CustomBorderStyle.defaultBorderSideStyle,
-              )
-          ),
-
+              )),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(onPressed: (){},icon: Icon(Icons.volume_up_outlined, color: AppColor.white,)),
-              IconButton(onPressed: (){},icon: Icon(isAudioCall?Icons.videocam_outlined:Icons.videocam_off_outlined, color: AppColor.white,)),
-              IconButton(onPressed: (){},icon: Icon(Icons.mic_off_outlined, color: AppColor.white,)),
-              IconButton(style: IconButton.styleFrom(backgroundColor: Colors.red) ,onPressed: () => Get.back(),icon: Icon(Icons.call_end_outlined, color: AppColor.white,)),
-
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.volume_up_outlined,
+                    color: dark ? AppColor.white : AppColor.grey,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    isAudioCall
+                        ? Icons.videocam_outlined
+                        : Icons.videocam_off_outlined,
+                    color: dark ? AppColor.white : AppColor.grey,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.mic_off_outlined,
+                    color: dark ? AppColor.white : AppColor.grey,
+                  )),
+              IconButton(
+                  style: IconButton.styleFrom(backgroundColor: AppColor.red),
+                  onPressed: () => Get.back(),
+                  icon: Icon(
+                    Icons.call_end_outlined,
+                    color: AppColor.white,
+                  )),
             ],
           ),
-        )
-    );
+        ));
   }
 }

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
+
+import '../../../utils/constants/app_color.dart';
 
 class ActionList {
-  static VoidCallback? videoCallButtonPressed;
-  static VoidCallback? audioCallButtonPressed;
-  static VoidCallback? messageButtonPressed;
-  static VoidCallback? cameraButtonPressed;
-  static VoidCallback? searchButtonPressed;
-  static List<String> moreButtonText = [];
-  static List<Widget> moreButtonPressed = [];
-  static List<Widget> actions() => [
+  final dark = HelperFunctions.isDarkMode();
+  VoidCallback? videoCallButtonPressed;
+  VoidCallback? audioCallButtonPressed;
+  VoidCallback? messageButtonPressed;
+  VoidCallback? cameraButtonPressed;
+  VoidCallback? searchButtonPressed;
+  List<String> moreButtonText = [];
+  List<Widget> moreButtonPressed = [];
+  List<Widget> actions() => [
         if (videoCallButtonPressed != null)
           IconButton(
             iconSize: 22,
@@ -48,22 +52,23 @@ class ActionList {
             icon: const Icon(Icons.search),
             onPressed: searchButtonPressed,
           ),
-        if (moreButtonText != null)
+        if (moreButtonText.isNotEmpty)
           PopupMenuButton<VoidCallback>(
-            onSelected: (value){
-              value();
-            },
+              onSelected: (value) {
+                value();
+              },
               position: PopupMenuPosition.under,
-              color: const Color(0xFF121B22),
+              color: dark ? AppColor.popupDark : AppColor.popupLight,
               icon: const Icon(Icons.more_vert),
-              itemBuilder: (BuildContext context) =>
-                  List.generate(moreButtonText.length, (index) => PopupMenuItem<VoidCallback>(
-                      value: (){
-                        (moreButtonPressed != null) ? Get.to(() => moreButtonPressed[index]) : null;
-                      },
-                      child: Text(moreButtonText[index]),
-                    )
-                  )
-          )
+              itemBuilder: (BuildContext context) => List.generate(
+                  moreButtonText.length,
+                  (index) => PopupMenuItem<VoidCallback>(
+                        value: () {
+                          (moreButtonPressed != null)
+                              ? Get.to(() => moreButtonPressed[index])
+                              : null;
+                        },
+                        child: Text(moreButtonText[index]),
+                      )))
       ];
 }

@@ -7,20 +7,23 @@ import '../../../../../utils/helpers/helper_function.dart';
 class Channel extends StatelessWidget {
   const Channel({
     super.key,
+    required this.name,
+    required this.image,
   });
+
+  final String name;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-            color: dark
-                ? AppColor.defaultBorderDark
-                : AppColor.defaultBorderLight,
+            color:
+                dark ? AppColor.defaultBorderDark : AppColor.defaultBorderLight,
             width: 1),
       ),
       child: Column(
@@ -28,15 +31,16 @@ class Channel extends StatelessWidget {
         children: [
           Stack(
             children: [
-              const CircularImage(),
+              CircularImage(
+                image: image,
+              ),
               Positioned(
                 right: 0,
                 bottom: 0,
                 child: Container(
                     decoration: BoxDecoration(
-                        color: AppColor.black,
-                        borderRadius:
-                        BorderRadius.circular(100)),
+                        color: dark ? AppColor.black : AppColor.white,
+                        borderRadius: BorderRadius.circular(100)),
                     child: Icon(
                       Icons.verified,
                       color: AppColor.primary,
@@ -45,20 +49,23 @@ class Channel extends StatelessWidget {
               )
             ],
           ),
-          const Text("WhatsApp"),
+          Text(name),
           SizedBox(
             height: 30,
             width: 110,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.secondaryDark),
+                    backgroundColor: dark
+                        ? AppColor.secondaryDark
+                        : AppColor.secondaryLight),
                 onPressed: () {},
                 child: Text(
                   "Follow",
-                  style:
-                  TextStyle(color: AppColor.secondaryLight),
-                )
-            ),
+                  style: TextStyle(
+                      color: dark
+                          ? AppColor.secondaryLight
+                          : AppColor.secondaryDark),
+                )),
           ),
         ],
       ),

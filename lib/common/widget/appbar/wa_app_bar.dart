@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
 import 'package:whatsapp_clone_with_flutter/common/widget/appbar/action_list.dart';
@@ -21,18 +20,26 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.searchButtonPressed,
     this.moreButtonPressed = const [],
     this.titleWidget,
-    this.leadingWidth = 40,
+    this.leadingWidth = 50,
     this.showBackButtonWithImage = false,
     this.titleSpacing = 0,
     this.moreButtonText = const [],
+    this.image,
+    this.centerTitle = false,
+    this.titleSize,
+    this.showBorder = true,
   });
 
   final String? title;
+  final String? image;
   final bool isBold;
   final bool showBackButton;
   final bool showBackButtonWithImage;
+  final bool centerTitle;
+  final bool showBorder;
   final Widget? titleWidget;
   final double leadingWidth, titleSpacing;
+  final double? titleSize;
   final VoidCallback? videoCallButtonPressed;
   final VoidCallback? audioCallButtonPressed;
   final VoidCallback? messageButtonPressed;
@@ -44,52 +51,58 @@ class WAAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
-    ActionList.moreButtonText = moreButtonText;
-    ActionList.moreButtonPressed = moreButtonPressed;
-    ActionList.searchButtonPressed = searchButtonPressed;
-    ActionList.cameraButtonPressed = cameraButtonPressed;
-    ActionList.messageButtonPressed = messageButtonPressed;
-    ActionList.audioCallButtonPressed = audioCallButtonPressed;
-    ActionList.videoCallButtonPressed = videoCallButtonPressed;
+    ActionList actionListAppBar = ActionList();
+    actionListAppBar.moreButtonText = moreButtonText;
+    actionListAppBar.moreButtonPressed = moreButtonPressed;
+    actionListAppBar.searchButtonPressed = searchButtonPressed;
+    actionListAppBar.cameraButtonPressed = cameraButtonPressed;
+    actionListAppBar.messageButtonPressed = messageButtonPressed;
+    actionListAppBar.audioCallButtonPressed = audioCallButtonPressed;
+    actionListAppBar.videoCallButtonPressed = videoCallButtonPressed;
     return AppBar(
       titleSpacing: showBackButtonWithImage ? titleSpacing : null,
       title: (title != null)
           ? Text(
               title!,
-              style:
-                  isBold ? const TextStyle(fontWeight: FontWeight.w600) : null,
+              style: TextStyle(
+                fontWeight: isBold ? FontWeight.w600 : null,
+                fontSize: (titleSize != null) ? titleSize : null,
+              ),
             )
           : (titleWidget != null)
               ? titleWidget
               : null,
-      centerTitle: false,
-      backgroundColor: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
+      centerTitle: centerTitle,
+      backgroundColor:
+          dark ? AppColor.backgroundDark : AppColor.backgroundLight,
       leadingWidth:
           (showBackButton || showBackButtonWithImage) ? leadingWidth : null,
       leading: showBackButton
           ? IconButton(
-              onPressed: () => Get.back(),
+              onPressed: () => Navigator.pop(context),
               icon: const Icon(
                 Iconsax.arrow_left,
                 size: 25,
               ))
           : showBackButtonWithImage
               ? IconButton(
-                  onPressed: () => Get.back(),
-                  icon: const Row(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Iconsax.arrow_left,
                         size: 25,
                       ),
-                      CircularImage(),
+                      CircularImage(image: image!),
                     ],
                   ))
               : null,
-      shape: Border(
-        bottom: CustomBorderStyle.defaultBorderSideStyle,
-      ),
-      actions: ActionList.actions(),
+      shape: showBorder
+          ? Border(
+              bottom: CustomBorderStyle.defaultBorderSideStyle,
+            )
+          : null,
+      actions: actionListAppBar.actions(),
     );
   }
 

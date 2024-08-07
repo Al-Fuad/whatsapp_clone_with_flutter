@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 
@@ -12,7 +9,7 @@ class MessageBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: Row(
         children: [
           Expanded(
@@ -22,10 +19,12 @@ class MessageBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30)),
             child: Row(
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.emoji_emotions_outlined)),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.emoji_emotions_outlined)),
                 Flexible(
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 20.0,
                       maxHeight: 135.0,
                     ),
@@ -36,22 +35,26 @@ class MessageBar extends StatelessWidget {
                         maxLines: null,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 5),
                           hintText: "Message",
                           hintStyle: TextStyle(
-                            color:AppColor.grey,
+                            color: AppColor.grey,
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.attach_file)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt_outlined))
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.attach_file)),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.camera_alt_outlined))
               ],
             ),
           )),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           IconButton(

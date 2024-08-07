@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone_with_flutter/common/style/custom_border_style.dart';
 import 'package:whatsapp_clone_with_flutter/common/widget/appbar/wa_app_bar.dart';
 import 'package:whatsapp_clone_with_flutter/features/chats/screens/updates/widget/channel.dart';
+import 'package:whatsapp_clone_with_flutter/features/personalization/screens/settings/settings.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
 
 import '../../../../common/widget/image/circular_image.dart';
+import '../../../../utils/constants/image_string.dart';
 
 class Updates extends StatelessWidget {
   const Updates({super.key});
@@ -15,12 +17,14 @@ class Updates extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Scaffold(
-      backgroundColor: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
+      backgroundColor:
+          dark ? AppColor.backgroundDark : AppColor.backgroundLight,
       appBar: WAAppBar(
         title: "Updates",
-        cameraButtonPressed: (){},
-        searchButtonPressed: (){},
-        moreButtonText: [],
+        cameraButtonPressed: () {},
+        searchButtonPressed: () {},
+        moreButtonText: const ["Status privacy", "Create channel", "Settings"],
+        moreButtonPressed: [Container(), Container(), const Settings()],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -55,7 +59,10 @@ class Updates extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: AppColor.primary,
                                   borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(color: AppColor.black)),
+                                  border: Border.all(
+                                      color: dark
+                                          ? AppColor.black
+                                          : AppColor.white)),
                               child: Icon(
                                 Icons.add,
                                 color: AppColor.black,
@@ -68,16 +75,17 @@ class Updates extends StatelessWidget {
                       const SizedBox(
                         width: 14,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "My Status",
                             style: TextStyle(fontSize: 16),
                           ),
                           Text(
                             "Tap to add status update",
-                            style: TextStyle(fontSize: 13, color: Colors.grey),
+                            style:
+                                TextStyle(fontSize: 13, color: AppColor.grey),
                           ),
                         ],
                       ),
@@ -126,7 +134,7 @@ class Updates extends StatelessWidget {
                   ),
                   Text(
                     "Stay updated to topics that matter to you. Find channels to follow below.",
-                    style: TextStyle(fontSize: 13, color: Colors.grey),
+                    style: TextStyle(fontSize: 13, color: AppColor.grey),
                   )
                 ],
               ),
@@ -136,19 +144,17 @@ class Updates extends StatelessWidget {
             ),
             SizedBox(
               height: 170,
-              child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    SizedBox(width: 12,),
-                    Channel(),
-                    Channel(),
-                    Channel(),
-                    Channel(),
-                    Channel(),
-                    Channel(),
-                    Channel(),
-                  ]
+              child: ListView.separated(
+                itemCount: 8,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, index) => const SizedBox(
+                  width: 10,
+                ),
+                separatorBuilder: (_, index) => Channel(
+                  name: "Channel ${index + 1}",
+                  image: ImageString.whatsappLogo,
+                ),
               ),
             ),
             Padding(
@@ -159,10 +165,8 @@ class Updates extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "Explore more",
-                    style:
-                    TextStyle(color: AppColor.black),
-                  )
-              ),
+                    style: TextStyle(color: AppColor.black),
+                  )),
             )
           ],
         ),
@@ -172,23 +176,30 @@ class Updates extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           FloatingActionButton(
-            onPressed: () {  },
+            onPressed: () {},
             backgroundColor: AppColor.primary,
-            child: Icon(Icons.camera_alt, color: dark ? AppColor.black : AppColor.white,),
+            child: Icon(
+              Icons.camera_alt,
+              color: dark ? AppColor.black : AppColor.white,
+            ),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           SizedBox(
             height: 40,
             width: 40,
             child: FloatingActionButton(
-              onPressed: () {  },
-                backgroundColor: dark ? AppColor.writeStatus : AppColor.grey,
-                child: Icon(Icons.edit, color: dark ? AppColor.grey : AppColor.writeStatus,),
-                ),
+              onPressed: () {},
+              backgroundColor: dark ? AppColor.writeStatus : AppColor.grey,
+              child: Icon(
+                Icons.edit,
+                color: dark ? AppColor.grey : AppColor.writeStatus,
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 }
-

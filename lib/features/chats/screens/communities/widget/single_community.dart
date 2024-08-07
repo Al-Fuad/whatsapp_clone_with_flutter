@@ -25,10 +25,10 @@ class SingleCommunity extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border(bottom: CustomBorderStyle.defaultBorderSideStyle),
-            color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
+            color: dark ? AppColor.backgroundDark : AppColor.backgroundLight,
           ),
           child: ListTile(
             onTap: () {},
@@ -39,33 +39,36 @@ class SingleCommunity extends StatelessWidget {
           ),
         ),
         ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           itemCount: groupNames.length,
-          itemBuilder: (BuildContext context, int index) => (index < 3) ? Container(
-            padding: EdgeInsets.all(10),
-            color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
+          itemBuilder: (BuildContext context, int index) => (index < 3)
+              ? Container(
+                  padding: const EdgeInsets.all(10),
+                  color:
+                      dark ? AppColor.backgroundDark : AppColor.backgroundLight,
+                  child: ListTile(
+                    onTap: () {},
+                    leading: CircularImage(
+                      image: groupImages[index],
+                    ),
+                    title: Text(groupNames[index]),
+                  ),
+                )
+              : null,
+        ),
+        if (groupNames.length > 3)
+          Container(
+            height: 70,
+            padding: const EdgeInsets.all(10),
+            color: dark ? AppColor.backgroundDark : AppColor.backgroundLight,
             child: ListTile(
               onTap: () {},
-              leading: CircularImage(
-                image: groupImages[index],
-              ),
-              title: Text(groupNames[index]),
+              leading: const Icon(Icons.keyboard_arrow_right),
+              title: const Text("View All"),
             ),
-          ) : null,
-        ),
-        if(groupNames.length > 3)
-        Container(
-          height: 70,
-          padding: EdgeInsets.all(10),
-          color: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
-          child: ListTile(
-            onTap: (){},
-            leading: Icon(Icons.keyboard_arrow_right),
-            title: Text("View All"),
           ),
-        ),
       ],
     );
   }

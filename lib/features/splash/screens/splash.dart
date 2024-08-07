@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:whatsapp_clone_with_flutter/bottom_nav.dart';
+import 'package:whatsapp_clone_with_flutter/features/authentication/screens/welcome/welcome.dart';
 import 'package:whatsapp_clone_with_flutter/utils/constants/app_color.dart';
 import 'package:whatsapp_clone_with_flutter/utils/helpers/helper_function.dart';
+
+import '../../../utils/constants/image_string.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -13,12 +15,12 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 2000),(){
-      Get.off(() => const BottomNav(), transition: Transition.fade);
+    Timer(const Duration(milliseconds: 2000), () {
+      // Get.off(() => const BottomNav(), transition: Transition.fade);
+      Get.off(() => const Welcome(), transition: Transition.fade);
     });
   }
 
@@ -26,7 +28,8 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Scaffold(
-      backgroundColor: dark ? AppColor.splashBackgroudDark : AppColor.splashBackgroudLight,
+      backgroundColor:
+          dark ? AppColor.splashBackgroundDark : AppColor.splashBackgroundLight,
       body: Column(
         children: [
           Expanded(
@@ -34,8 +37,8 @@ class _SplashState extends State<Splash> {
             child: SizedBox(
               child: Image(
                 image: dark
-                    ? const AssetImage("assets/logos/whatsapp_dark.png")
-                    : const AssetImage("assets/logos/whatsapp.png"),
+                    ? AssetImage(ImageString.whatsappDark)
+                    : AssetImage(ImageString.whatsapp),
                 width: 50,
                 height: 50,
               ),
@@ -48,7 +51,7 @@ class _SplashState extends State<Splash> {
                 Text(
                   "from",
                   style: TextStyle(
-                      color: dark ? Colors.white : null,
+                      color: dark ? AppColor.white : null,
                       fontWeight: FontWeight.w200,
                       fontSize: 9),
                 ),
@@ -58,8 +61,8 @@ class _SplashState extends State<Splash> {
                   children: [
                     Image(
                       image: dark
-                          ?  const AssetImage("assets/logos/meta_dark.png")
-                          :  const AssetImage("assets/logos/meta.png"),
+                          ? AssetImage(ImageString.metaDark)
+                          : AssetImage(ImageString.meta),
                       height: 18,
                     ),
                     const SizedBox(
@@ -68,7 +71,7 @@ class _SplashState extends State<Splash> {
                     Text(
                       "Meta",
                       style: TextStyle(
-                          color: dark ? Colors.white : AppColor.primary,
+                          color: dark ? AppColor.white : AppColor.primary,
                           fontSize: 15),
                     ),
                   ],

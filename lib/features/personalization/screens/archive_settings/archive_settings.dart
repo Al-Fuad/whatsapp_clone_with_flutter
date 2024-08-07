@@ -11,21 +11,29 @@ class ArchiveSettings extends StatefulWidget {
 }
 
 class _ArchiveSettingsState extends State<ArchiveSettings> {
-    bool _switchValue = false;
+  bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode();
     return Scaffold(
-      backgroundColor: dark ? AppColor.backgroudDark : AppColor.backgroudLight,
+      backgroundColor:
+          dark ? AppColor.backgroundDark : AppColor.backgroundLight,
       appBar: const WAAppBar(
         showBackButton: true,
         title: "Archive settings",
       ),
       body: ListTile(
-        title: Text("Keep chats archived", style: TextStyle(color: AppColor.white, fontSize: 16),),
-        subtitle: Text("Archived chats will remain archived when you receive a new message", style: TextStyle(fontSize: 14,color: AppColor.grey),),
+        title: Text(
+          "Keep chats archived",
+          style: TextStyle(
+              color: dark ? AppColor.white : AppColor.black, fontSize: 16),
+        ),
+        subtitle: Text(
+          "Archived chats will remain archived when you receive a new message",
+          style: TextStyle(fontSize: 13, color: AppColor.grey),
+        ),
         trailing: Switch(
-          activeColor: AppColor.black,
+          activeColor: dark ? AppColor.black : AppColor.white,
           activeTrackColor: AppColor.primary,
           value: _switchValue,
           onChanged: (value) {
