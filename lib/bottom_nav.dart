@@ -60,7 +60,7 @@ class _BottomNavState extends State<BottomNav> {
                 icon: (_currentIndex != 1) ? Icon(Icons.cloud_outlined, color: unselectedIcon,) : Icon(Icons.cloud, color: selectedIcon,),
                 label: "Updates"),
             NavigationDestination(
-                icon: (_currentIndex != 2) ? Icon(Icons.people_alt_outlined, color: unselectedIcon,) : Icon(Icons.people_alt, color: selectedIcon,),
+                icon: (_currentIndex != 2) ? Icon(Icons.groups_outlined, color: unselectedIcon,) : Icon(Icons.groups, color: selectedIcon,),
                 label: "Communities"),
             NavigationDestination(
                 icon: (_currentIndex != 3) ? Icon(Icons.call_outlined, color: unselectedIcon,) : Icon(Icons.call, color: selectedIcon,),
